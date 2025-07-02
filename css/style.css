@@ -1,0 +1,392 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  align-items: center;
+  z-index: 10;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: red;
+}
+
+.hero {
+  background: url('../assets/fondo.jpg') no-repeat center center/cover;
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 60px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.hero .light {
+  color: white;
+}
+
+.hero .green {
+  color: #00897b;
+  position: relative;
+}
+
+.hero-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.btn {
+  padding: 15px 30px;
+  border: none;
+  background-color: #00bfa5;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transform: scale(1);
+  transition: background-color 0.2s ease-in-out;
+  animation: none;
+  position: relative;
+  z-index: 1;
+}
+
+.btn:hover {
+  background-color: red;
+  animation: popWithExplosion 0.8s ease forwards;
+}
+
+/* Animación en 4 fases:
+   0-30%: hundimiento con sombra oscura
+   30-60%: avance frontal fuerte
+   60-80%: eco de sombra roja
+   80-100%: sombra roja se expande y desaparece
+*/
+@keyframes popWithExplosion {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  30% {
+    transform: scale(0.9);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+  60% {
+    transform: scale(1.12);
+    box-shadow: none;
+  }
+  80% {
+    transform: scale(1);
+    box-shadow: 0 0 25px 10px rgba(255, 0, 0, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 60px 30px rgba(255, 0, 0, 0);
+  }
+
+}
+  .underline-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.green {
+  position: relative;
+  display: inline-block;
+}
+
+.scribble {
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Mantengo tu altura modificada */
+  z-index: -1;
+  overflow: hidden; /* Para evitar artefactos visuales */
+}
+
+.scribble path {
+  stroke: #ff0000;
+  stroke-width: 6px; /* Mantengo tu grosor modificado */
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: scribbleCycle 9s infinite;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 2px rgba(255, 0, 0, 0.4));
+  shape-rendering: geometricPrecision;
+  vector-effect: non-scaling-stroke; /* Para consistencia en el trazo */
+}
+
+@keyframes scribbleCycle {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0; /* Comienza completamente transparente */
+  }
+  10% {
+    opacity: 1; /* Se hace visible rápidamente */
+  }
+  15% {
+    stroke-dashoffset: 0; /* Dibujo completo */
+  }
+  50% {
+    stroke-dashoffset: 0; /* Permanece visible */
+  }
+  60% {
+    opacity: 1; /* Aseguramos visibilidad completa */
+  }
+  65% {
+    stroke-dashoffset: 1000; /* Comienza a borrarse */
+    opacity: 0; /* Se desvanece simultáneamente */
+  }
+  100% {
+    stroke-dashoffset: 1000;
+    opacity: 0; /* Permanece oculto */
+  }
+
+}
+
+.services-section {
+  padding: 80px 20px;
+  margin: 10px;
+  background: #f8f9fa;
+  overflow-x: auto; /* Permite scroll horizontal si no caben */
+}
+
+.services-section h2 {
+  text-align: center;
+  margin-bottom: 60px;
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.cards-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  width: 300px; /* Ancho fijo para cada card */
+  flex-shrink: 0;
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+
+/* Animaciones */
+.card-left {
+  transform: translateX(-50px);
+}
+
+.card-right {
+  transform: translateX(50px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Contenido */
+.card-content h3 {
+  color: #15b5b9;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.card-content p {
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .cards-row {
+    justify-content: flex-start;
+    padding: 20px;
+  }
+}
+
+/* Estilos para los nuevos SVG */
+.card-icon {
+  text-align: center;
+  margin: 0 auto 20px;
+  width: 80px;
+  height: 80px;
+}
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.card:hover .card-icon svg {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+}
+
+/* Ajuste para el contenido con icono */
+.card-content {
+  margin-top: 15px;
+}
+  
+
+/* Sección Recursos */
+.resources-section {
+  background: #150700fa;
+  padding: 80px 20px;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.resources-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.resources-content h2 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.resources-content p {
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Botón Recursos (versión roja/blanca) */
+.btn-resources {
+  padding: 15px 30px;
+  border: none;
+  background-color: white;
+  color: #ff4444;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  z-index: 1;
+  border: 2px solid #ff4444;
+}
+
+.btn-resources:hover {
+  background-color: #ff4444;
+  color: white;
+  animation: popWithExplosionRed 0.8s ease forwards;
+}
+
+.btn-resources .btn-icon {
+  transition: all 0.3s ease;
+  fill: #ff4444;
+}
+
+.btn-resources:hover .btn-icon {
+  fill: white;
+}
+
+/* Versión roja de tu animación existente */
+@keyframes popWithExplosionRed {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  30% {
+    transform: scale(0.9);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  }
+  60% {
+    transform: scale(1.12);
+    box-shadow: none;
+  }
+  80% {
+    transform: scale(1);
+    box-shadow: 0 0 25px 10px rgba(255, 0, 0, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 60px 30px rgba(255, 0, 0, 0);
+  }
+}
