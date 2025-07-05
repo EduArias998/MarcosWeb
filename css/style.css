@@ -308,10 +308,18 @@ nav ul li a:hover {
 /* Sección Recursos */
 .resources-section {
   background: #150700fa;
-  padding: 80px 20px;
+  padding: 60px 20px;
   border-radius: 12px;
-  margin: 40px auto;
-  max-width: 1200px;
+  margin: 60px auto;
+  max-width: 1000px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.resources-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .resources-content {
@@ -333,7 +341,6 @@ nav ul li a:hover {
   margin-bottom: 30px;
 }
 
-/* Botón Recursos (versión roja/blanca) */
 .btn-resources {
   padding: 15px 30px;
   border: none;
@@ -367,7 +374,6 @@ nav ul li a:hover {
   fill: white;
 }
 
-/* Versión roja de tu animación existente */
 @keyframes popWithExplosionRed {
   0% {
     transform: scale(1);
@@ -389,4 +395,9 @@ nav ul li a:hover {
     transform: scale(1);
     box-shadow: 0 0 60px 30px rgba(255, 0, 0, 0);
   }
+}
+
+/* Asegura que el contenedor no recorte la animación */
+.container {
+  overflow: visible;
 }
