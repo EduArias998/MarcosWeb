@@ -401,3 +401,178 @@ nav ul li a:hover {
 .container {
   overflow: visible;
 }
+
+
+/* Section card pequeño y carrusel */
+.testimonials-section {
+  background: #f8f9fa;
+  padding: 80px 20px;
+}
+
+.testimonials-wrapper {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* --- Cambios SOLO para el card izquierdo --- */
+.testimonial-cta {
+  flex: 0 0 auto; /* Elimina crecimiento flexible */
+  background: white;
+  padding: 20px; /* Espaciado interno reducido */
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 240px; /* Ancho fijo para consistencia */
+  height: fit-content; /* Altura exacta al contenido */
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Espacio uniforme entre elementos */
+}
+
+.testimonial-cta h2 {
+  font-size: 1.5rem;
+  margin: 0; /* Eliminamos márgenes por defecto */
+  color: #333;
+}
+
+.rating-source {
+  margin: 0; /* Eliminamos márgenes */
+  font-size: 0.9rem;
+}
+
+.btn-testimonial {
+  padding: 10px 16px; /* Más compacto vertical/horizontal */
+  background-color: #4285f4;
+  color: white;
+  font-weight: 600; /* Semi-bold (menos grueso que bold) */
+  border-radius: 4px; /* Bordes ligeramente menos redondeados */
+  text-decoration: none;
+  display: inline-block;
+  transform: scale(1);
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  z-index: 1;
+  border: none;
+  font-size: 0.9rem; /* Texto un poco más pequeño */
+  letter-spacing: 0.5px; /* Mejor legibilidad */
+  line-height: 1.2; /* Control de altura de texto */
+}
+/* ----------------------------------------- */
+
+.btn-testimonial:hover {
+  animation: popWithExplosionBlue 0.8s ease forwards;
+}
+
+@keyframes popWithExplosionBlue {
+  0% { transform: scale(1); box-shadow: none; }
+  30% { transform: scale(0.9); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+  60% { transform: scale(1.12); box-shadow: none; }
+  80% { transform: scale(1); box-shadow: 0 0 25px 10px rgba(66,133,244,0.3); }
+  100% { transform: scale(1); box-shadow: 0 0 60px 30px rgba(66,133,244,0); }
+}
+
+/* Carrusel */
+.testimonials-carousel {
+  flex: 2;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  scrollbar-width: none; /* Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.testimonial-card {
+  min-width: 300px;
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.client-photo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.client-name {
+  font-weight: bold;
+  color: #333;
+}
+
+.stars {
+  color: #FFD700;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.testimonial-text {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.read-more {
+  color: #4285f4;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.prev {
+  left: -20px;
+}
+
+.next {
+  right: -20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonials-wrapper {
+    flex-direction: column;
+  }
+  
+  .carousel-arrow {
+    display: none;
+  }
+}
