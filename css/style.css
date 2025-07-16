@@ -33,6 +33,38 @@ header {
   margin-right: 10px;
 }
 
+/* HEADER transparente por defecto */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 30px;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+/* Cambia el fondo cuando hace scroll */
+header.scrolled {
+  background-color: #000; /* Fondo negro */
+}
+
+/* Estilo para el enlace activo en el navbar */
+nav ul li a.active {
+  color: #15b5b9;
+  font-weight: bold;
+  position: relative;
+}
+
+nav ul li a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  height: 2px;
+  width: 100%;
+  background-color: #15b5b9; /* línea inferior */
+}
+
 nav ul {
   list-style: none;
   display: flex;

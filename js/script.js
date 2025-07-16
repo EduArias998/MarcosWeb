@@ -90,4 +90,45 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+// ===== CAMBIO DE FONDO EN HEADER AL HACER SCROLL =====
+const header = document.querySelector('header');
+const heroSection = document.querySelector('.hero');
 
+const scrollObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+if (heroSection) {
+  scrollObserver.observe(heroSection);
+}
+
+// ===== RESALTAR MENÚ ACTIVO =====
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav ul li a');
+
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const id = entry.target.getAttribute('id');
+    const link = document.querySelector(`nav ul li a[href="#${id}"]`);
+    
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      if (link) link.classList.add('active');
+    }
+  });
+}, {
+  rootMargin: '-50% 0px -50% 0px', // Detecta el centro de cada sección
+  threshold: 0
+});
+
+sections.forEach(section => {
+  navObserver.observe(section);
+});
