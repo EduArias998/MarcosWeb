@@ -1,0 +1,54 @@
+const cursor = document.querySelector('.cursor-dot');
+
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.top = `${e.clientY}px`;
+});
+
+let animationPlaying = false;
+
+function handleScroll() {
+  const portafolioSection = document.querySelector('.portafolio-section');
+  const rect = portafolioSection.getBoundingClientRect();
+  const isVisible = (rect.top <= window.innerHeight / 2) && 
+                   (rect.bottom >= window.innerHeight / 2);
+
+  if (isVisible && !animationPlaying) {
+    animationPlaying = true;
+    const squares = document.querySelectorAll('.animated-square');
+    
+    squares.forEach(square => {
+      square.style.animation = 'none';
+      void square.offsetWidth; // Trigger reflow
+      square.style.animation = '';
+    });
+    
+    setTimeout(() => {
+      animationPlaying = false;
+    }, 3000); // Duración de la animación
+  }
+}
+
+window.addEventListener('scroll', handleScroll);
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Podemos añadir interacciones adicionales aquí si es necesario
+    const cards = document.querySelectorAll('.portfolio-card');
+    
+    cards.forEach(card => {
+        // Reiniciar animaciones al salir del hover
+        card.addEventListener('mouseleave', function() {
+            const title = this.querySelector('.card-title');
+            const subtitle = this.querySelector('.card-subtitle');
+            
+            title.style.animation = 'none';
+            subtitle.style.animation = 'none';
+            
+            // Pequeño retraso para reiniciar
+            setTimeout(() => {
+                title.style.animation = '';
+                subtitle.style.animation = '';
+            }, 10);
+        });
+    });
+});

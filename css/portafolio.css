@@ -1,0 +1,382 @@
+.portafolio-section {
+  position: relative;
+  height: 100vh;
+  background: #02f7ff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TÍTULO Y FLECHAS */
+.portafolio-content {
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  color: white;
+}
+
+.portafolio-title {
+  font-size: 3rem;
+  border-radius: 5%;
+  letter-spacing: 5px;
+  animation: fadeInUp 2s ease forwards;
+  opacity: 0;
+}
+
+.portafolio-p {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  animation: fadeInUp 2s ease forwards;
+  opacity: 0;
+}
+
+.arrows {
+  margin-top: 10px;
+  animation: fadeInDown 2s ease 0.5s forwards;
+  opacity: 0;
+}
+
+.arrow {
+  display: block;
+  font-size: 2rem;
+  animation: bounce 1.2s infinite;
+}
+
+.arrow:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.arrow:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* CUADROS GRANDES */
+.animated-square {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  transform-origin: center;
+  z-index: 0;
+  animation-duration: 3s; /* Reducido de 4s a 3s */
+  animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1); /* Más dinámico */
+  animation-iteration-count: infinite;
+}
+
+.red-square {
+  background-color: red;
+  top: -300px;
+  left: -300px;
+  animation: floatRedSquare 6s ease-in-out infinite alternate;
+}
+
+.blue-square {
+  background-color: #000000;
+  bottom: -120px;
+  right: -120px;
+  animation: floatBlueSquare 6s ease-in-out infinite alternate;
+}
+
+.red-square-2 {
+  background-color: red;
+  top: -300px;
+  right: -300px; /* Esquina superior derecha */
+  animation: floatRedSquare2 6s ease-in-out infinite alternate;
+}
+
+.blue-square-2 {
+  background-color: #000000;
+  bottom: -120px;
+  left: -120px; /* Esquina inferior izquierda */
+  animation: floatBlueSquare2 6s ease-in-out infinite alternate;
+}
+
+/* CURSOR SEGUIDOR */
+.cursor-dot {
+  width: 20px;
+  height: 20px;
+  background: red;
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: 0 0 10px red;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease;
+}
+
+
+/* ANIMACIONES */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Animaciones mejoradas en bucle para los cuadros grandes */
+@keyframes floatRedSquare {
+  0% {
+    transform: translate(-100%, -100%) rotate(360deg); /* Entra girando */
+  }
+  30% {
+    transform: translate(-20%, -50%) rotate(0deg); /* Fin de rotación */
+  }
+  70% {
+    transform: translate(-10%, -30%); /* Movimiento lento arrastrado */
+  }
+  100% {
+    transform: translate(100%, 50%) scale(0); /* Sale bruscamente */
+  }
+}
+
+/* Animación cuadro NEGRO (entra desde esquina inferior derecha) */
+@keyframes floatBlueSquare {
+  0% {
+    transform: translate(100%, 100%) rotate(-360deg); /* Entra girando */
+  }
+  30% {
+    transform: translate(50%, 80%) rotate(0deg); /* Fin de rotación */
+  }
+  70% {
+    transform: translate(40%, 60%); /* Movimiento lento arrastrado */
+  }
+  100% {
+    transform: translate(-50%, -30%) scale(0); /* Sale bruscamente */
+  }
+}
+
+/* Animación para el nuevo cuadro ROJO (esquina superior derecha) */
+@keyframes floatRedSquare2 {
+  0% {
+    transform: translate(100%, -100%) rotate(360deg); /* Entra desde derecha arriba */
+  }
+  30% {
+    transform: translate(50%, -50%) rotate(0deg); 
+  }
+  70% {
+    transform: translate(40%, -30%); 
+  }
+  100% {
+    transform: translate(-50%, 50%) scale(0); /* Sale hacia izquierda abajo */
+  }
+}
+
+/* Animación para el nuevo cuadro NEGRO (esquina inferior izquierda) */
+@keyframes floatBlueSquare2 {
+  0% {
+    transform: translate(-100%, 100%) rotate(-360deg); /* Entra desde izquierda abajo */
+  }
+  30% {
+    transform: translate(-50%, 80%) rotate(0deg); 
+  }
+  70% {
+    transform: translate(-40%, 60%); 
+  }
+  100% {
+    transform: translate(50%, -30%) scale(0); /* Sale hacia derecha arriba */
+  }
+}
+
+
+/* Estilos generales de la sección */
+.portfolio-cards {
+    padding: 4rem 2rem;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+/* Contenedor de tarjetas - Modificado para más densidad */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem; /* Reducido de 2rem a 1rem */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem; /* Añadido para mejor espaciado en móviles */
+}
+
+/* Estilos de cada tarjeta - Optimizado */
+.portfolio-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 1/1;
+    margin-bottom: 0; /* Eliminado el margen negativo */
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1.5rem;
+    transform: translateY(100%);
+    transition: all 0.4s ease;
+    opacity: 0;
+}
+
+.card-title {
+    color: white;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+    animation-delay: 0.2s;
+}
+
+.card-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+    animation-delay: 0.3s;
+}
+
+/* Efecto hover (sin cambios) */
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-card:hover .card-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .card-overlay {
+        padding: 1rem;
+    }
+    
+    .card-title {
+        font-size: 1rem;
+    }
+    
+    .card-subtitle {
+        font-size: 0.8rem;
+    }
+}
+
+        /* Estilos para el footer */
+        .custom-footer {
+            font-family: 'Arial', sans-serif;
+            background-color: #000305;
+            padding: 40px 20px;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .footer-section h2 {
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+            color: #ffffff;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
+        }
+        
+        .footer-section p, .footer-section address {
+            margin-bottom: 10px;
+            font-style: normal;
+        }
+        
+        .footer-divider {
+            border: none;
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+        
+        .footer-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .footer-list li {
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
