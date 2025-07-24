@@ -1,4 +1,23 @@
 const cursor = document.querySelector('.cursor-dot');
+const portafolioSection = document.querySelector('#portafolio');
+const cardsSection = document.querySelector('.portfolio-cards');
+
+function updateCursorSize() {
+  const portafolioRect = portafolioSection.getBoundingClientRect();
+  const cardsRect = cardsSection.getBoundingClientRect();
+
+  const inPortafolio = portafolioRect.top <= window.innerHeight && portafolioRect.bottom >= 0;
+  const inCards = cardsRect.top <= window.innerHeight && cardsRect.bottom >= 0;
+
+  if (inPortafolio && !inCards) {
+    cursor.classList.add('big');
+  } else {
+    cursor.classList.remove('big');
+  }
+}
+
+document.addEventListener('scroll', updateCursorSize);
+updateCursorSize(); // Esto fuerza una verificación en la carga
 
 document.addEventListener('mousemove', (e) => {
   cursor.style.left = `${e.clientX}px`;
@@ -52,3 +71,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+

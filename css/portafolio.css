@@ -101,8 +101,15 @@
   z-index: 3;
   box-shadow: 0 0 10px red;
   transform: translate(-50%, -50%);
-  transition: transform 0.05s ease;
+  transition: transform 0.05s ease, width 0.3s ease, height 0.3s ease, box-shadow 0.3s ease;
 }
+
+.cursor-dot.big {
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 15px red;
+}
+
 
 
 /* ANIMACIONES */
