@@ -214,7 +214,37 @@
     padding: 4rem 2rem;
     background: #f8f9fa;
     text-align: center;
+    position: relative;   /* Necesario para posicionar el círculo dentro */
+    overflow: hidden;     /* Oculta el exceso del círculo */
+    z-index: 0;           /* Asegura que el contenido esté por encima del círculo */
 }
+
+.expanding-circle {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 255, 247, 0.7), rgba(0, 0, 0, 0));
+  border-radius: 50%;
+  pointer-events: none;
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.3s ease;
+  z-index: -10; /* más bajo que todo */
+}
+
+.expanding-circle.hidden {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Títulos en blanco */
+.section-title,
+.section-subtitle,
+.portafolio-title,
+.portafolio-p {
+  color: white;
+}
+
+
 
 .section-title {
     font-size: 2.5rem;
